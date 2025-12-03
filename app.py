@@ -11,8 +11,8 @@ import os
 try:
     PROJECT_ID = st.secrets["PROJECT_ID"]
     AUTH_TOKEN = st.secrets["AUTH_TOKEN"]
-except (KeyError, FileNotFoundError):
-    st.error("❌ Missing credentials! Please add secrets.toml file")
+except KeyError:
+    st.error("❌ Missing PROJECT_ID or AUTH_TOKEN in Streamlit Cloud Secrets!")
     st.stop()
 
 def export_mixpanel_event(event_name, start_date, end_date):
